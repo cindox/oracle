@@ -1,5 +1,5 @@
 # oracle
-
+<html>
 
 查询1:
 
@@ -28,3 +28,4 @@ GROUP BY d.department_name
 having d.department_name in ('IT','Sales');
 ![Image text](https://github.com/cindox/oracle/blob/main/photo/homework1.2.1.png)
 ![Image text](https://github.com/cindox/oracle/blob/main/photo/homework1.2.2.png)
+</html>
