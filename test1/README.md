@@ -12,8 +12,8 @@ from hr.departments d,HR.employees e
 where d.department_id=e.department_id
 and d.department_name in ('IT','Sales')
 GROUP BY d.department_name;
-![Image text](./photo/homework1.1.1.png)
-![Image text](./photo/homework1.1.2.png)
+![Image text](https://github.com/cindox/oracle/blob/main/photo/homework1.1.1.png)
+![Image text](https://github.com/cindox/oracle/blob/main/photo/homework1.1.2.png)
 
  
 查询2:
@@ -26,5 +26,5 @@ from hr.departments d,HR.employees e
 where d.department_id=e.department_id
 GROUP BY d.department_name
 having d.department_name in ('IT','Sales');
-![Image text](./photo/homework1.2.1.png)
-![Image text](./photo/homework1.2.2.png)
+![Image text](https://github.com/cindox/oracle/blob/main/photo/homework1.2.1.png)
+![Image text](https://github.com/cindox/oracle/blob/main/photo/homework1.2.2.png)
