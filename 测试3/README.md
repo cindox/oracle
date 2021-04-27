@@ -14,7 +14,7 @@
 - 进行分区与不分区的对比实验。
 
 ## 实验参考步骤
-<img src=".\img\image-20210329140838685.png" alt="image-20210329140838685" style="zoom:67%;" />
+![Image text](https://github.com/cindox/oracle/blob/main/photo/work3.1.png)  
 
 【示例8-11】在主表orders和从表order_details之间建立引用分区
 在study用户中创建两个表：orders（订单表）和order_details（订单详表），两个表通过列order_id建立主外键关联。orders表按范围分区进行存储，order_details使用引用分区进行存储。
@@ -231,13 +231,9 @@ select count(*) from orders;
 select count(*) from order_details;
 ```
 
-<img src=".\img\image-20210329142030816.png" alt="image-20210329142030816" style="zoom: 67%;" />
-
-
-
-<img src=".\img\image-20210329142239102.png" alt="image-20210329142239102" style="zoom:67%;" />
-
-<img src=".\img\image-20210329143257301.png" alt="image-20210329143257301" style="zoom:67%;" />
+![Image text](https://github.com/cindox/oracle/blob/main/photo/work3.2.1.png)  
+![Image text](https://github.com/cindox/oracle/blob/main/photo/work3.2.2.png)  
+![Image text](https://github.com/cindox/oracle/blob/main/photo/work3.2.3.png)  
 
 
 
@@ -263,17 +259,11 @@ SQL>SELECT a.tablespace_name "表空间名",Total/1024/1024 "大小MB",
 - autoextensible是显示表空间中的数据文件是否自动增加。
 - MAX_MB是指数据文件的最大容量。
 
-查询一结果
+查询结果：
 
-<img src=".\img\image-20210329142536944.png" alt="image-20210329142536944" style="zoom:67%;" />
+![Image text](https://github.com/cindox/oracle/blob/main/photo/work3.3.png)  
 
-![image-20210329142352127](.\img\image-20210329142352127.png)
 
-查询二结果
-
-<img src=".\img\image-20210329142430134.png" alt="image-20210329142430134" style="zoom:67%;" />
-
-<img src=".\img\image-20210329142637291.png" alt="image-20210329142637291" style="zoom:67%;" />
 
 ## 实验总结
 
