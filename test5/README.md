@@ -1,5 +1,4 @@
 # 实验5：PL/SQL编程
-###### 用户名：y
 
 #### 一.创建一个包(Package)，包名是MyPack。包MyPack中有：
   
