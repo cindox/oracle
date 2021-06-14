@@ -36,7 +36,7 @@
 <p>年级</p>
 </td>
 <td width="227">
-<p>2017级</p>
+<p>2018级</p>
 </td>
 </tr>
 <tr>
@@ -44,13 +44,13 @@
 <p>学生姓名</p>
 </td>
 <td width="242">
-<p>羊颖玥</p>
+<p>仝若凡</p>
 </td>
 <td width="128">
 <p>学号</p>
 </td>
 <td width="227">
-<p>201710414424</p>
+<p>201710414417</p>
 </td>
 </tr>
 <tr>
@@ -893,7 +893,7 @@
 <ul>
 <li>创建表，约束和索引</li>
 </ul>
-<p>本系统包括部门表，员工表，订单表，订单详单表，产品表。以订单表和订单详单表为例。ORDERS表按分区存储，分区类型选择&ldquo;RANG&rdquo;范围分区，按订单时间ORDER_DATE的范围进行分区,分区PARTITION_BEFORE_2016存储订单时间小于2016年的订单记录,这个分区存储在表空间&nbsp;USERS中,而分区PARTITION_BEFORE2017存储的是订单时间小于2017年的订单记录,由于有分区PARTITION_BEFORE_2016的存在,&nbsp;PARTITION_BEFORE_2017分区实际只存储2016 年一年的记录。</p>
+<p>本系统包括部门表，员工表，订单表，订单详单表，产品表。以订单表和订单详单表为例。ORDERS表按分区存储，分区类型选择&ldquo;RANG&rdquo;范围分区，按订单时间ORDER_DATE的范围进行分区,分区PARTITION_BEFORE_2016存储订单时间小于2016年的订单记录,这个分区存储在表空间&nbsp;USERS中,而分区PARTITION_BEFORE2021存储的是订单时间小于2021年的订单记录,由于有分区PARTITION_BEFORE_2016的存在,&nbsp;PARTITION_BEFORE_2021分区实际只存储2016 年一年的记录。</p>
 <p>创建ORDERS表的部分语句如下：</p>
 <p>CREATE TABLE ORDERS</p>
 <p>(</p>
@@ -948,12 +948,12 @@
 <p>BUFFER_POOL DEFAULT</p>
 <p>)</p>
 <p>NOCOMPRESS NO INMEMORY</p>
-<p>, PARTITION PARTITION_2016 VALUES LESS THAN (TO_DATE(' 2017-01-01 00:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))</p>
+<p>, PARTITION PARTITION_2016 VALUES LESS THAN (TO_DATE(' 2021-01-01 00:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))</p>
 <p>NOLOGGING</p>
 <p>TABLESPACE USERS02</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;ORDER_DETAILS是 ORDERS的从表, ORDER_DETAILS的记录数量比ORDERS还多,所以 ORDER_DETAILS表也必须分区存储,但由于 ORDER_DETAILS表中没有订单时间,所以不能按时间分区进行存储。ORDER_DETAILS使用引用分区进行存储。</p>
 <p>创建 ORDER_DETAILS表的部分语句如下：</p>
-<p>CREATE TABLE order_details (id NUMBER(10, 0) NOT NULL , order_id NUMBER(10, 0) NOT NULL, product_id VARCHAR2(40 BYTE) NOT NULL , product_num NUMBER(8, 2) NOT NULL , product_price NUMBER(8, 2) NOT NULL , CONSTRAINT order_details_fk1 FOREIGN KEY&nbsp; (order_id)REFERENCES orders&nbsp; (&nbsp; order_id&nbsp;&nbsp; )ENABLE ) TABLESPACE USERS PCTFREE 10 INITRANS 1 STORAGE (&nbsp;&nbsp; BUFFER_POOL DEFAULT ) NOCOMPRESS NOPARALLELPARTITION BY REFERENCE (order_details_fk1)(PARTITION PARTITION_BEFORE_2016 NOLOGGING TABLESPACE USERS --必须指定表空间,否则会将分区存储在用户的默认表空间中...) NOCOMPRESS NO INMEMORY, PARTITION PARTITION_BEFORE_2017 NOLOGGING TABLESPACE USERS02...) NOCOMPRESS NO INMEMORY&nbsp; );</p>
+<p>CREATE TABLE order_details (id NUMBER(10, 0) NOT NULL , order_id NUMBER(10, 0) NOT NULL, product_id VARCHAR2(40 BYTE) NOT NULL , product_num NUMBER(8, 2) NOT NULL , product_price NUMBER(8, 2) NOT NULL , CONSTRAINT order_details_fk1 FOREIGN KEY&nbsp; (order_id)REFERENCES orders&nbsp; (&nbsp; order_id&nbsp;&nbsp; )ENABLE ) TABLESPACE USERS PCTFREE 10 INITRANS 1 STORAGE (&nbsp;&nbsp; BUFFER_POOL DEFAULT ) NOCOMPRESS NOPARALLELPARTITION BY REFERENCE (order_details_fk1)(PARTITION PARTITION_BEFORE_2016 NOLOGGING TABLESPACE USERS --必须指定表空间,否则会将分区存储在用户的默认表空间中...) NOCOMPRESS NO INMEMORY, PARTITION PARTITION_BEFORE_2021 NOLOGGING TABLESPACE USERS02...) NOCOMPRESS NO INMEMORY&nbsp; );</p>
 <p>创建全局临时表ORDER_ID_TEMP的语句如下：</p>
 <p>-- DDL for Table ORDER_ID_TEMP</p>
 <p>CREATE GLOBAL TEMPORARY TABLE "ORDER_ID_TEMP"</p>
@@ -1444,4 +1444,3 @@
 <li>总结</li>
 </ul>
 <p>该水果销售系统的数据库设计包括表设计，用户管理，PL/SQL设计，备份方案设计以及容灭方案设计，难度逐渐增加，同时也将本学期所学的oracle的知识点全部串接起来了，将它们一起运用便完成了一个数据库系统设计。将理论与实际结合了起来，不仅让我明白了可以干什么，还让我知道了该怎么去用。不是学习了轻飘飘了理论知识，而是学习了如何掌握使用这些技能。</p>
-
